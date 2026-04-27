@@ -561,20 +561,6 @@ footer{
 .footer-copy a{color:var(--accent);text-decoration:none;border-bottom:1px dashed rgba(0,232,143,0.3)}
 .footer-copy a:hover{border-bottom-color:var(--accent)}
 
-.visitor-count{
-  font-family:var(--mono);font-size:0.68rem;
-  color:var(--text-dim);opacity:0.5;
-  margin-top:20px;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  letter-spacing:0.5px;
-}
-
-.vc-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--accent);opacity:0.6;
-  display:inline-block;
-}
-
 /* --- BACK TO TOP --- */
 .back-to-top{
   position:fixed;bottom:32px;right:32px;
@@ -664,7 +650,7 @@ footer{
 @media print{
   *{transition:none!important;animation:none!important}
 
-  .grain,.glow,.scroll-progress,.back-to-top,nav,.pdf-btn,.visitor-count,.footer-copy,.divider{display:none!important}
+  .grain,.glow,.scroll-progress,.back-to-top,nav,.pdf-btn,.footer-copy,.divider{display:none!important}
 
   .reveal{opacity:1!important;transform:none!important}
 

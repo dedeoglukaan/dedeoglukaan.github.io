@@ -102,19 +102,6 @@ document.getElementById('pdfBtn').addEventListener('click', () => {
   setTimeout(() => window.print(), 100);
 });
 
-// --- VISITOR COUNTER ---
-(async () => {
-  const el = document.getElementById('visitorCount');
-  try {
-    const res = await fetch('https://visitor-badge.laobi.icu/badge?page_id=dedeoglukaan.github.io');
-    const svg = await res.text();
-    const match = svg.match(/<text[^>]*>(\d+)<\/text>\s*$/);
-    if (match) {
-      const count = parseInt(match[1]).toLocaleString();
-      el.innerHTML = '<span class="vc-dot"></span> ' + count + ' visitors';
-    }
-  } catch {}
-})();
 
 // --- LANGUAGE TOGGLE ---
 const langBtn = document.getElementById('langToggle');

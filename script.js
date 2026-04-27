@@ -121,104 +121,104 @@ const langBtn = document.getElementById('langToggle');
 let currentLang = 'en';
 
 const translations = {
-  'nav-exp':       { en: 'Experience',  tr: 'Deneyim' },
-  'nav-training':  { en: 'Training',    tr: 'Eğitim' },
-  'nav-certs':     { en: 'Certs',       tr: 'Sertifika' },
-  'nav-projects':  { en: 'Projects',    tr: 'Proje' },
-  'nav-skills':    { en: 'Skills',      tr: 'Beceri' },
-  'hero-tag':      { en: 'Open to opportunities', tr: 'Fırsatlara açık' },
-  'hero-desc':     {
-    en: 'Computer Engineering graduate with a strong foundation in Linux systems, networking, and application security. Backed by hands-on internship experience, an IEEE-published research project, and continuous investment in offensive security training.',
-    tr: 'Linux sistemleri, ağ ve uygulama güvenliği alanlarında güçlü bir temele sahip Bilgisayar Mühendisliği mezunu. Uygulamalı staj deneyimi, IEEE\'de yayımlanmış bir araştırma projesi ve sürekli ofansif güvenlik eğitimi yatırımı ile desteklenmektedir.'
+  ‘nav-exp’:       { en: ‘Experience’,  tr: ‘Deneyim’ },
+  ‘nav-training’:  { en: ‘Training’,    tr: ‘Eğitim’ },
+  ‘nav-certs’:     { en: ‘Certs’,       tr: ‘Sertifika’ },
+  ‘nav-projects’:  { en: ‘Projects’,    tr: ‘Proje’ },
+  ‘nav-skills’:    { en: ‘Skills’,      tr: ‘Beceri’ },
+  ‘hero-tag’:      { en: ‘Open to opportunities’, tr: ‘Fırsatlara açık’ },
+  ‘hero-desc’:     {
+    en: ‘Computer Engineering graduate with a strong foundation in Linux systems, networking, and application security. Backed by hands-on internship experience, an IEEE-published research project, and continuous investment in offensive security training.’,
+    tr: ‘Linux sistemleri, ağ yapıları ve uygulama güvenliği konularında güçlü altyapıya sahip Bilgisayar Mühendisliği mezunu. Staj deneyimleri, IEEE’de yayımlanmış araştırma projesi ve ofansif güvenlik eğitimleriyle desteklenen bir profil.’
   },
-  'sec-edu':       { en: 'Education',   tr: 'Eğitim' },
-  'sec-exp':       { en: 'Experience',  tr: 'Deneyim' },
-  'sec-training':  { en: 'Training & Development', tr: 'Eğitim & Gelişim' },
-  'sec-certs':     { en: 'Certifications', tr: 'Sertifikalar' },
-  'sec-projects':  { en: 'Projects',    tr: 'Projeler' },
-  'sec-skills':    { en: 'Technical Skills', tr: 'Teknik Beceriler' },
-  'edu-bsc':       { en: 'BSc in Computer Engineering', tr: 'Bilgisayar Mühendisliği Lisans' },
-  'edu-bsc-org':   { en: 'Eskişehir Technical University, Turkey — Language of Instruction: English', tr: 'Eskişehir Teknik Üniversitesi — Eğitim Dili: İngilizce' },
-  'edu-hs-org':    { en: 'Science High School — Silivri, Istanbul, Turkey', tr: 'Fen Lisesi — Silivri, İstanbul, Türkiye' },
-  'exp-estu-title':{ en: 'IT Systems Intern', tr: 'BT Sistemleri Stajyeri' },
-  'exp-estu-org':  { en: 'Eskişehir Technical University — IT Department, Systems & Networking', tr: 'Eskişehir Teknik Üniversitesi — BT Departmanı, Sistemler & Ağ' },
-  'exp-estu-1':    {
-    en: 'Worked in a team of three interns to install and configure DSpace 8 for the university’s digital library. Installed Java 17, Maven, Ant, PostgreSQL, and Apache Solr on an Ubuntu 22.04 VM provisioned by the IT staff.',
-    tr: 'Üç stajyerden oluşan bir ekipte üniversitenin dijital kütüphanesi için DSpace 8’in kurulum ve yapılandırmasında çalıştı. BT personeli tarafından hazırlanan Ubuntu 22.04 sanal makinesine Java 17, Maven, Ant, PostgreSQL ve Apache Solr kurulumu gerçekleştirdi.'
+  ‘sec-edu’:       { en: ‘Education’,   tr: ‘Eğitim’ },
+  ‘sec-exp’:       { en: ‘Experience’,  tr: ‘Deneyim’ },
+  ‘sec-training’:  { en: ‘Training & Development’, tr: ‘Eğitim & Gelişim’ },
+  ‘sec-certs’:     { en: ‘Certifications’, tr: ‘Sertifikalar’ },
+  ‘sec-projects’:  { en: ‘Projects’,    tr: ‘Projeler’ },
+  ‘sec-skills’:    { en: ‘Technical Skills’, tr: ‘Teknik Beceriler’ },
+  ‘edu-bsc’:       { en: ‘BSc in Computer Engineering’, tr: ‘Bilgisayar Mühendisliği Lisans’ },
+  ‘edu-bsc-org’:   { en: ‘Eskişehir Technical University, Turkey — Language of Instruction: English’, tr: ‘Eskişehir Teknik Üniversitesi — Öğretim Dili: İngilizce’ },
+  ‘edu-hs-org’:    { en: ‘Science High School — Silivri, Istanbul, Turkey’, tr: ‘Fen Lisesi — Silivri, İstanbul’ },
+  ‘exp-estu-title’:{ en: ‘IT Systems Intern’, tr: ‘Sistem Stajyeri’ },
+  ‘exp-estu-org’:  { en: ‘Eskişehir Technical University — IT Department, Systems & Networking’, tr: ‘Eskişehir Teknik Üniversitesi — Bilgi İşlem Dairesi, Sistem ve Ağ Birimi’ },
+  ‘exp-estu-1’:    {
+    en: ‘Worked in a team of three interns to install and configure DSpace 8 for the university’s digital library. Installed Java 17, Maven, Ant, PostgreSQL, and Apache Solr on an Ubuntu 22.04 VM provisioned by the IT staff.’,
+    tr: ‘Üç kişilik stajyer ekibiyle üniversitenin dijital kütüphanesi için DSpace 8 kurulumu ve yapılandırması üzerinde çalıştı. BT ekibinin hazırladığı Ubuntu 22.04 VM üzerine Java 17, Maven, Ant, PostgreSQL ve Apache Solr kurdu.’
   },
-  'exp-estu-2':    {
-    en: 'Set up the PostgreSQL database: created a dedicated DSpace user, configured connection security (pg_hba.conf, MD5 auth), and enabled the pgcrypto extension for UUID support.',
-    tr: 'PostgreSQL veritabanını kurdu: DSpace kullanıcısı oluşturdu, bağlantı güvenliğini yapılandırdı (pg_hba.conf, MD5 auth) ve UUID desteği için pgcrypto eklentisini etkinleştirdi.'
+  ‘exp-estu-2’:    {
+    en: ‘Set up the PostgreSQL database: created a dedicated DSpace user, configured connection security (pg_hba.conf, MD5 auth), and enabled the pgcrypto extension for UUID support.’,
+    tr: ‘PostgreSQL veritabanını kurdu: DSpace için ayrı kullanıcı oluşturdu, bağlantı güvenliğini ayarladı (pg_hba.conf, MD5 auth) ve UUID desteği için pgcrypto eklentisini aktifleştirdi.’
   },
-  'exp-estu-3':    {
-    en: 'Configured Apache Solr cores for DSpace search, integrated MaxMind GeoIP for usage statistics, and ran the application as a Spring Boot JAR with custom properties and logging.',
-    tr: 'DSpace araması için Apache Solr çekirdeklerini yapılandırdı, kullanım istatistikleri için MaxMind GeoIP entegrasyonu yaptı ve uygulamayı özel ayarlar ve loglama ile Spring Boot JAR olarak çalıştırdı.'
+  ‘exp-estu-3’:    {
+    en: ‘Configured Apache Solr cores for DSpace search, integrated MaxMind GeoIP for usage statistics, and ran the application as a Spring Boot JAR with custom properties and logging.’,
+    tr: ‘DSpace arama motoru için Apache Solr core’larını yapılandırdı, kullanım istatistikleri için MaxMind GeoIP entegre etti ve uygulamayı özel ayarlarla Spring Boot JAR olarak çalıştırdı.’
   },
-  'exp-estu-4':    {
-    en: 'Configured HTTPS access through Apache HTTPD as a reverse proxy with a Let’s Encrypt certificate, and set up cron jobs for daily indexing, media filtering, and checksum verification.',
-    tr: 'Let’s Encrypt sertifikası ile Apache HTTPD üzerinden ters proxy olarak HTTPS erişimi yapılandırdı ve günlük indeksleme, medya filtreleme ve checksum doğrulama için cron görevleri kurdu.'
+  ‘exp-estu-4’:    {
+    en: ‘Configured HTTPS access through Apache HTTPD as a reverse proxy with a Let’s Encrypt certificate, and set up cron jobs for daily indexing, media filtering, and checksum verification.’,
+    tr: ‘Apache HTTPD ile reverse proxy üzerinden HTTPS erişimi kurdu (Let’s Encrypt sertifikası), günlük indeksleme, medya filtreleme ve checksum doğrulama için cron job’ları oluşturdu.’
   },
-  'exp-creen-title':{ en: 'IT Systems Intern', tr: 'BT Sistemleri Stajyeri' },
-  'exp-creen-org': { en: 'Creentech — Istanbul, Turkey — Systems & Network Department', tr: 'Creentech — İstanbul, Türkiye — Sistemler & Ağ Departmanı' },
-  'exp-creen-1':   {
-    en: 'Installed Debian from scratch and practiced daily Linux administration: user management, file permissions, sudo configuration, package management with APT, and service control with systemctl.',
-    tr: 'Sıfırdan Debian kurulumu yaparak günlük Linux yönetimi pratiği yaptı: kullanıcı yönetimi, dosya izinleri, sudo yapılandırması, APT ile paket yönetimi ve systemctl ile servis kontrolü.'
+  ‘exp-creen-title’:{ en: ‘IT Systems Intern’, tr: ‘Sistem Stajyeri’ },
+  ‘exp-creen-org’: { en: ‘Creentech — Istanbul, Turkey — Systems & Network Department’, tr: ‘Creentech — İstanbul — Sistem ve Ağ Departmanı’ },
+  ‘exp-creen-1’:   {
+    en: ‘Installed Debian from scratch and practiced daily Linux administration: user management, file permissions, sudo configuration, package management with APT, and service control with systemctl.’,
+    tr: ‘Sıfırdan Debian kurarak günlük Linux yönetimi pratiği yaptı: kullanıcı yönetimi, dosya izinleri, sudo ayarları, APT ile paket yönetimi ve systemctl ile servis kontrolü.’
   },
-  'exp-creen-2':   {
-    en: 'Wrote basic Bash scripts, set up cron jobs for scheduled tasks, and learned process management, disk usage monitoring, and text processing tools (grep, awk, find).',
-    tr: 'Temel Bash betikleri yazdı, zamanlanmış görevler için cron işleri kurdu ve süreç yönetimi, disk kullanımı izleme ve metin işleme araçlarını (grep, awk, find) öğrendi.'
+  ‘exp-creen-2’:   {
+    en: ‘Wrote basic Bash scripts, set up cron jobs for scheduled tasks, and learned process management, disk usage monitoring, and text processing tools (grep, awk, find).’,
+    tr: ‘Basit Bash scriptleri yazdı, zamanlanmış görevler için cron job’ları kurdu, süreç yönetimi, disk izleme ve metin işleme araçlarını (grep, awk, find) öğrendi.’
   },
-  'exp-creen-3':   {
-    en: 'Assisted in configuring Fortinet equipment alongside the network team: FortiGate firewall policies, VLAN setup, static routing, web filtering, and AP/switch integration.',
-    tr: 'Ağ ekibiyle birlikte Fortinet ekipmanlarının yapılandırmasına yardımcı oldu: FortiGate güvenlik duvarı politikaları, VLAN kurulumu, statik yönlendirme, web filtreleme ve AP/switch entegrasyonu.'
+  ‘exp-creen-3’:   {
+    en: ‘Assisted in configuring Fortinet equipment alongside the network team: FortiGate firewall policies, VLAN setup, static routing, web filtering, and AP/switch integration.’,
+    tr: ‘Ağ ekibiyle birlikte Fortinet cihazlarının konfigürasyonuna destek verdi: FortiGate firewall kuralları, VLAN kurulumu, statik routing, web filtreleme ve AP/switch entegrasyonu.’
   },
-  'exp-creen-4':   {
-    en: 'Observed production monitoring (Grafana, Zabbix), virtualization platforms (VirtualBox, VMware, Nutanix), and Active Directory management. Toured Casper Ness Data Center to study physical infrastructure.',
-    tr: 'Üretim ortamı izleme (Grafana, Zabbix), sanallaştırma platformları (VirtualBox, VMware, Nutanix) ve Active Directory yönetimini gözlemledi. Fiziksel altyapıyı incelemek için Casper Ness Veri Merkezi’ni ziyaret etti.'
+  ‘exp-creen-4’:   {
+    en: ‘Observed production monitoring (Grafana, Zabbix), virtualization platforms (VirtualBox, VMware, Nutanix), and Active Directory management. Toured Casper Ness Data Center to study physical infrastructure.’,
+    tr: ‘Canlı ortam izleme (Grafana, Zabbix), sanallaştırma platformları (VirtualBox, VMware, Nutanix) ve Active Directory yönetimini gözlemledi. Casper Ness Veri Merkezi’ni ziyaret ederek fiziksel altyapıyı inceledi.’
   },
-  'tr-title':      { en: 'Garanti BBVA Technology Security Academy', tr: 'Garanti BBVA Teknoloji Güvenlik Akademisi' },
-  'tr-org':        { en: 'Enterprise Technology & Cybersecurity Training Program — Patika.dev', tr: 'Kurumsal Teknoloji & Siber Güvenlik Eğitim Programı — Patika.dev' },
-  'tr-badge':      { en: 'Selected top 20 out of ~2,000 applicants', tr: '~2.000 başvuru arasından ilk 20’ye seçildi' },
-  'tr-1':          {
-    en: 'Intensive program covering Linux internals, network protocols, and enterprise application security.',
-    tr: 'Linux iç yapısı, ağ protokolleri ve kurumsal uygulama güvenliğini kapsayan yoğun program.'
+  ‘tr-title’:      { en: ‘Garanti BBVA Technology Security Academy’, tr: ‘Garanti BBVA Teknoloji Güvenlik Akademisi’ },
+  ‘tr-org’:        { en: ‘Enterprise Technology & Cybersecurity Training Program — Patika.dev’, tr: ‘Kurumsal Teknoloji ve Siber Güvenlik Eğitim Programı — Patika.dev’ },
+  ‘tr-badge’:      { en: ‘Selected top 20 out of ~2,000 applicants’, tr: ‘~2.000 başvurudan ilk 20’ye seçildi’ },
+  ‘tr-1’:          {
+    en: ‘Intensive program covering Linux internals, network protocols, and enterprise application security.’,
+    tr: ‘Linux iç yapısı, ağ protokolleri ve kurumsal uygulama güvenliğini kapsayan yoğun eğitim programı.’
   },
-  'tr-2':          {
-    en: 'Practiced threat modeling, access control design, and secure architecture review on real-world enterprise systems.',
-    tr: 'Gerçek kurumsal sistemlerde tehdit modelleme, erişim kontrolü tasarımı ve güvenli mimari incelemesi uygulamaları yapıldı.'
+  ‘tr-2’:          {
+    en: ‘Practiced threat modeling, access control design, and secure architecture review on real-world enterprise systems.’,
+    tr: ‘Gerçek kurumsal sistemler üzerinde tehdit modelleme, erişim kontrolü tasarımı ve güvenli mimari incelemesi çalışmaları yaptı.’
   },
-  'proj-title':    {
-    en: 'OSTEODEEP — AI-Driven Bone Health Assessment with Chatbot Integration using X-rays',
-    tr: 'OSTEODEEP — X-ray Kullanarak Yapay Zeka Destekli Kemik Sağlığı Değerlendirmesi ve Chatbot Entegrasyonu'
+  ‘proj-title’:    {
+    en: ‘OSTEODEEP — AI-Driven Bone Health Assessment with Chatbot Integration using X-rays’,
+    tr: ‘OSTEODEEP — X-ray ile Yapay Zeka Destekli Kemik Sağlığı Değerlendirmesi ve Chatbot Entegrasyonu’
   },
-  'proj-org':      { en: 'Graduation Thesis — Eskişehir Technical University', tr: 'Bitirme Tezi — Eskişehir Teknik Üniversitesi' },
-  'proj-ieee':     { en: 'IEEE Published', tr: 'IEEE Yayımlandı' },
-  'proj-tubitak':  { en: 'TÜBİTAK 2209-A Funded', tr: 'TÜBİTAK 2209-A Destekli' },
-  'proj-1':        {
-    en: 'Designed and built a complete ML pipeline for bone health screening: data collection from public repositories (1,947 knee X-ray images), preprocessing with CLAHE contrast enhancement, conservative augmentation to preserve anatomical integrity, and class balancing for the underrepresented osteopenia class.',
-    tr: 'Kemik sağlığı taraması için eksiksiz bir ML hattı tasarlayıp kurdu: halka açık depolardan veri toplama (1.947 diz X-ray görüntüsü), CLAHE kontrast iyileştirme ile ön işleme, anatomik bütünlüğü korumak için muhafazakâr veri artırımı ve yetersiz temsil edilen osteopeni sınıfı için sınıf dengeleme.'
+  ‘proj-org’:      { en: ‘Graduation Thesis — Eskişehir Technical University’, tr: ‘Bitirme Tezi — Eskişehir Teknik Üniversitesi’ },
+  ‘proj-ieee’:     { en: ‘IEEE Published’, tr: ‘IEEE Yayımlandı’ },
+  ‘proj-tubitak’:  { en: ‘TÜBİTAK 2209-A Funded’, tr: ‘TÜBİTAK 2209-A Destekli’ },
+  ‘proj-1’:        {
+    en: ‘Designed and built a complete ML pipeline for bone health screening: data collection from public repositories (1,947 knee X-ray images), preprocessing with CLAHE contrast enhancement, conservative augmentation to preserve anatomical integrity, and class balancing for the underrepresented osteopenia class.’,
+    tr: ‘Kemik sağlığı taraması için uçtan uca ML pipeline’ı tasarlayıp geliştirdi: açık kaynak depolardan veri toplama (1.947 diz X-ray görüntüsü), CLAHE ile kontrast iyileştirme, anatomik bütünlüğü koruyan augmentation ve az temsil edilen osteopeni sınıfı için sınıf dengeleme.’
   },
-  'proj-2':        {
-    en: 'Extracted deep features in parallel from pre-trained EfficientNetB2 and VGG-19 models, fused the resulting feature vectors, and applied PCA (300 components) for dimensionality reduction while retaining maximum variance.',
-    tr: 'Önceden eğitilmiş EfficientNetB2 ve VGG-19 modellerinden paralel olarak derin öznitelikler çıkardı, elde edilen öznitelik vektörlerini birleştirdi ve maksimum varyansı koruyarak boyut azaltma için PCA (300 bileşen) uyguladı.'
+  ‘proj-2’:        {
+    en: ‘Extracted deep features in parallel from pre-trained EfficientNetB2 and VGG-19 models, fused the resulting feature vectors, and applied PCA (300 components) for dimensionality reduction while retaining maximum variance.’,
+    tr: ‘Önceden eğitilmiş EfficientNetB2 ve VGG-19 modellerinden paralel olarak derin öznitelik çıkarımı yaptı, öznitelik vektörlerini birleştirdi ve maksimum varyansı koruyarak PCA (300 bileşen) ile boyut indirgeme uyguladı.’
   },
-  'proj-3':        {
-    en: 'Implemented a stacking ensemble classifier with SVM (RBF kernel) and XGBoost as base learners and Logistic Regression as the meta-learner, with hyperparameter optimization via GridSearchCV within 5-fold cross-validation.',
-    tr: 'SVM (RBF çekirdek) ve XGBoost temel öğreniciler, Lojistik Regresyon meta-öğrenici olarak yığınlama topluluk sınıflandırıcı uyguladı; 5 katlamalı çapraz doğrulama içinde GridSearchCV ile hiperparametre optimizasyonu yaptı.'
+  ‘proj-3’:        {
+    en: ‘Implemented a stacking ensemble classifier with SVM (RBF kernel) and XGBoost as base learners and Logistic Regression as the meta-learner, with hyperparameter optimization via GridSearchCV within 5-fold cross-validation.’,
+    tr: ‘SVM (RBF kernel) ve XGBoost’u temel öğrenici, Lojistik Regresyon’u meta-öğrenici olarak kullanan stacking ensemble sınıflandırıcı geliştirdi; 5 katlı çapraz doğrulama içinde GridSearchCV ile hiperparametre optimizasyonu yaptı.’
   },
-  'proj-4':        {
-    en: 'Achieved 90.10% test accuracy, 90.14% weighted F1-score, and 0.96 macro-average ROC AUC. The model reached 91.20% recall on the clinically challenging osteopenia class, outperforming standalone CNN approaches in balanced multi-class classification.',
-    tr: '%90,10 test doğruluğu, %90,14 ağırlıklı F1-skoru ve 0,96 makro ortalama ROC AUC elde etti. Model, klinik açıdan zorlu osteopeni sınıfında %91,20 duyarlılık elde ederek dengeli çok sınıflı sınıflandırmada bağımsız CNN yaklaşımlarını geçti.'
+  ‘proj-4’:        {
+    en: ‘Achieved 90.10% test accuracy, 90.14% weighted F1-score, and 0.96 macro-average ROC AUC. The model reached 91.20% recall on the clinically challenging osteopenia class, outperforming standalone CNN approaches in balanced multi-class classification.’,
+    tr: ‘%90,10 test doğruluğu, %90,14 ağırlıklı F1-skoru ve 0,96 makro ortalama ROC AUC elde etti. Model, klinik açıdan zorlu osteopeni sınıfında %91,20 recall değerine ulaşarak tek başına CNN yaklaşımlarını geride bıraktı.’
   },
-  'proj-5':        {
-    en: 'Integrated a ChatGPT-powered chatbot via OpenAI API to deliver context-sensitive guidance on osteoporosis risks, prevention, and lifestyle recommendations based on diagnostic outcomes.',
-    tr: 'Tanı sonuçlarına dayanan osteoporoz riskleri, önleme ve yaşam tarzı önerileri konusunda bağlama duyarlı rehberlik sunmak için OpenAI API üzerinden ChatGPT destekli bir sohbet botu entegre etti.'
+  ‘proj-5’:        {
+    en: ‘Integrated a ChatGPT-powered chatbot via OpenAI API to deliver context-sensitive guidance on osteoporosis risks, prevention, and lifestyle recommendations based on diagnostic outcomes.’,
+    tr: ‘Tanı sonuçlarına göre osteoporoz riskleri, önleme yöntemleri ve yaşam tarzı önerileri sunan, OpenAI API ile çalışan ChatGPT tabanlı bir sohbet botu entegre etti.’
   },
-  'sk-sec':        { en: 'Security',    tr: 'Güvenlik' },
-  'sk-tool':       { en: 'Tools',       tr: 'Araçlar' },
-  'sk-sys':        { en: 'Systems',     tr: 'Sistemler' },
-  'sk-prog':       { en: 'Programming', tr: 'Programlama' },
-  'pdf-btn':       { en: 'Save as PDF', tr: 'PDF olarak kaydet' }
+  ‘sk-sec’:        { en: ‘Security’,    tr: ‘Güvenlik’ },
+  ‘sk-tool’:       { en: ‘Tools’,       tr: ‘Araçlar’ },
+  ‘sk-sys’:        { en: ‘Systems’,     tr: ‘Sistemler’ },
+  ‘sk-prog’:       { en: ‘Programming’, tr: ‘Programlama’ },
+  ‘pdf-btn’:       { en: ‘Save as PDF’, tr: ‘PDF olarak kaydet’ }
 };
 
 function setLang(lang) {

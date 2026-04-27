@@ -615,11 +615,39 @@ footer{
 
 /* --- SCROLL REVEAL --- */
 .reveal{
-  opacity:0;transform:translateY(20px);
-  transition:opacity 0.7s ease,transform 0.7s ease;
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
 
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{
+  opacity:0;transform:translateX(-40px);
+  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal-right{
+  opacity:0;transform:translateX(40px);
+  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal-scale{
+  opacity:0;transform:scale(0.92);
+  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible{
+  opacity:1;transform:none;
+}
+
+.stagger-1{transition-delay:0.05s}
+.stagger-2{transition-delay:0.1s}
+.stagger-3{transition-delay:0.15s}
+.stagger-4{transition-delay:0.2s}
+.stagger-5{transition-delay:0.25s}
+.stagger-6{transition-delay:0.3s}
+.stagger-7{transition-delay:0.35s}
 
 /* --- HACKER TERMINAL EASTER EGG --- */
 .hacker-terminal{
@@ -710,7 +738,7 @@ footer{
 
   .grain,.glow,.scroll-progress,.back-to-top,nav,.pdf-btn,.footer-copy,.divider{display:none!important}
 
-  .reveal{opacity:1!important;transform:none!important}
+  .reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1!important;transform:none!important;transition-delay:0s!important}
 
   html{font-size:11pt}
 

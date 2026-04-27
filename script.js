@@ -16,7 +16,7 @@ document.addEventListener('mousemove', e => {
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => revealObs.observe(el));
 
 // --- SMOOTH SCROLL NAV ---
 document.querySelectorAll('.nav-links a').forEach(a => {

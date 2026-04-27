@@ -152,7 +152,7 @@ const translations = {
   },
   'exp-estu-3':    {
     en: 'Configured Apache Solr cores for DSpace search, integrated MaxMind GeoIP for usage statistics, and ran the application as a Spring Boot JAR with custom properties and logging.',
-    tr: 'DSpace arama motoru için Apache Solr core\'larını yapılandırdı, kullanım istatistikleri için MaxMind GeoIP entegre etti ve uygulama yı özel ayarlarla Spring Boot JAR olarak çalıştırdı.'
+    tr: 'DSpace arama motoru için Apache Solr core\'larını yapılandırdı, kullanım istatistikleri için MaxMind GeoIP entegre etti ve uygulamayı özel ayarlarla Spring Boot JAR olarak çalıştırdı.'
   },
   'exp-estu-4':    {
     en: 'Configured HTTPS access through Apache HTTPD as a reverse proxy with a Let\'s Encrypt certificate, and set up cron jobs for daily indexing, media filtering, and checksum verification.',

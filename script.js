@@ -223,3 +223,75 @@ function setLang(lang) {
 langBtn.addEventListener('click', () => {
   setLang(currentLang === 'en' ? 'tr' : 'en');
 });
+
+// --- EASTER EGG: HACKER TERMINAL ---
+(() => {
+  const secret = 'dedephus';
+  let buffer = '';
+
+  document.addEventListener('keydown', e => {
+    if (document.querySelector('.hacker-terminal')) return;
+    buffer += e.key.toLowerCase();
+    if (buffer.length > secret.length) buffer = buffer.slice(-secret.length);
+    if (buffer === secret) {
+      buffer = '';
+      launchTerminal();
+    }
+  });
+
+  function launchTerminal() {
+    const overlay = document.createElement('div');
+    overlay.className = 'hacker-terminal';
+    const screen = document.createElement('div');
+    screen.className = 'ht-screen';
+    overlay.appendChild(screen);
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add('active'));
+
+    const lines = [
+      '> Initializing secure connection...',
+      '> Bypassing firewall...',
+      '> Decrypting credentials... ██████████ OK',
+      '> Scanning target: dedeoglukaan.github.io',
+      '> Enumerating services... 443/tcp open https',
+      '> Checking vulnerabilities...',
+      '> Buffer overflow detected in /portfolio',
+      '> Injecting payload...',
+      '> Spawning reverse shell...',
+      '',
+      '  ╔══════════════════════════════════╗',
+      '  ║      ACCESS GRANTED              ║',
+      '  ║      Welcome back, dedephus.     ║',
+      '  ╚══════════════════════════════════╝',
+    ];
+
+    let i = 0;
+    function typeLine() {
+      if (i >= lines.length) {
+        setTimeout(() => {
+          overlay.classList.remove('active');
+          setTimeout(() => overlay.remove(), 500);
+        }, 2000);
+        return;
+      }
+      const line = document.createElement('div');
+      line.className = 'ht-line';
+      screen.appendChild(line);
+      const text = lines[i];
+      let c = 0;
+      function typeChar() {
+        if (c < text.length) {
+          line.textContent += text[c];
+          c++;
+          setTimeout(typeChar, 15 + Math.random() * 25);
+        } else {
+          i++;
+          screen.scrollTop = screen.scrollHeight;
+          setTimeout(typeLine, text === '' ? 100 : 200 + Math.random() * 300);
+        }
+      }
+      typeChar();
+    }
+    typeLine();
+  }
+})();

@@ -621,6 +621,40 @@ footer{
 
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* --- HACKER TERMINAL EASTER EGG --- */
+.hacker-terminal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:all 0.5s;
+}
+
+.hacker-terminal.active{
+  background:rgba(0,0,0,0.95);
+  opacity:1;
+}
+
+.ht-screen{
+  width:min(700px,90vw);
+  max-height:80vh;
+  overflow-y:auto;
+  padding:32px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(0.72rem,2vw,0.88rem);
+  line-height:1.8;
+  color:#00e88f;
+  text-shadow:0 0 8px rgba(0,232,143,0.4);
+  border:1px solid rgba(0,232,143,0.15);
+  border-radius:12px;
+  background:rgba(5,5,8,0.9);
+  box-shadow:0 0 60px rgba(0,232,143,0.08),inset 0 0 60px rgba(0,0,0,0.5);
+}
+
+.ht-screen::-webkit-scrollbar{width:4px}
+.ht-screen::-webkit-scrollbar-thumb{background:rgba(0,232,143,0.2);border-radius:2px}
+
+.ht-line{white-space:pre;min-height:1.8em}
+
 /* --- RESPONSIVE --- */
 @media(max-width:768px){
   .hero{padding:100px 20px 50px}

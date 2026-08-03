@@ -1,9 +1,14 @@
 {
-  // Assets-only Worker: no server code, just static files served from the repo root.
+  // Assets-only Worker: no server code, just the static site in public/.
   // Add a "main" entry later if this site grows a backend (e.g. /api/contact).
+  //
+  // Site files live in public/ rather than the repo root so that wrangler's
+  // own .wrangler/tmp/ scratch directory stays outside the watched asset
+  // directory. With the root as the asset directory, `wrangler dev` watched
+  // the files it was itself writing and reloaded in a loop.
   "name": "kaandedeoglu-com",
   "compatibility_date": "2026-08-03",
   "assets": {
-    "directory": "./"
+    "directory": "./public"
   }
 }

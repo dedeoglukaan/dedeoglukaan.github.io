@@ -1,0 +1,9 @@
+{
+  // Assets-only Worker: no server code, just static files served from the repo root.
+  // Add a "main" entry later if this site grows a backend (e.g. /api/contact).
+  "name": "kaandedeoglu-com",
+  "compatibility_date": "2026-08-03",
+  "assets": {
+    "directory": "./"
+  }
+}

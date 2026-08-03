@@ -1,0 +1,7 @@
+# Files that must not be published as part of the site.
+# Pages excluded these automatically; Workers does not.
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+README.md

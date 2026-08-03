@@ -53,7 +53,19 @@
 [data-theme="light"] .cert-card:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08),0 0 20px rgba(5,150,105,0.08)}
 [data-theme="light"] .scroll-progress{background:linear-gradient(90deg,#059669,#0891b2)}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  /* iOS Safari inflates text on rotation without this. */
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  /* .reveal-right parks full-width sections at translateX(14px) until they
+     animate in, which pushed the page 14px wider than the viewport and gave
+     every screen under ~1030px a horizontal scrollbar on load. `clip` is used
+     over `hidden` because it does not turn the element into a scroll
+     container; `hidden` is left first as the fallback for older engines. */
+  overflow-x:hidden;
+  overflow-x:clip;
+}
 
 @keyframes page-fade{
   from{opacity:0}
@@ -61,6 +73,10 @@ html{scroll-behavior:smooth}
 }
 
 body{
+  /* Pairs with the rule on html; on the root element alone the horizontal
+     clip is defeated by the visible vertical axis. */
+  overflow-x:hidden;
+  overflow-x:clip;
   animation:page-fade 0.6s ease;
   background:var(--bg);
   color:var(--text);
@@ -689,53 +705,123 @@ footer{
 
 .ht-line{white-space:pre;min-height:1.8em}
 
+/* --- TOUCH / MOBILE BASE --- */
+/* Applies on any touch device, not just narrow ones. */
+@media(hover:none){
+  /* Kill the grey flash iOS/Android paint over tapped links. */
+  *{-webkit-tap-highlight-color:transparent}
+  /* Hover styles stick after a tap on touch devices; only apply them on press. */
+  .h-link:hover,.toggle-btn:hover,.nav-links a:hover{transform:none}
+  .h-link:active,.pdf-btn:active,.toggle-btn:active{transform:scale(0.98)}
+}
+
 /* --- RESPONSIVE --- */
 @media(max-width:768px){
-  .hero{padding:100px 20px 50px}
-  .section{padding:48px 20px}
-  .nav-inner{padding:0 12px;height:52px}
-  .nav-links{display:none}
-  .nav-right{gap:8px}
-  .nav-toggles{gap:3px}
-  .toggle-btn{padding:5px 9px;font-size:0.65rem}
+  /* Nav becomes two rows: brand + toggles, then a scrollable section strip.
+     display:contents lets .nav-right's children join .nav-inner's flex flow,
+     so they can be reordered without changing the markup. */
+  .nav-inner{
+    flex-wrap:wrap;height:auto;align-items:center;
+    padding:7px max(12px,env(safe-area-inset-left)) 0 max(12px,env(safe-area-inset-left));
+  }
+  .nav-right{display:contents}
+  .nav-brand{order:1;font-size:0.78rem}
+  .nav-toggles{order:2;margin-left:auto;gap:3px}
+  .toggle-btn{padding:6px 10px;font-size:0.65rem}
+
+  .nav-links{
+    order:3;width:100%;
+    display:flex;gap:2px;
+    margin-top:5px;padding:0 0 6px;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{white-space:nowrap;padding:7px 11px;font-size:0.74rem;letter-spacing:0.2px}
+
+  .hero{padding:100px 20px 30px}
+  /* Nav is sticky and now two rows tall — without this, tapping a nav link
+     lands the section heading underneath it. */
+  .section{padding:48px 20px;scroll-margin-top:92px}
+
   .hero-row{flex-direction:column;align-items:flex-start;gap:16px}
   .avatar{width:80px;height:80px}
-  .hero h1{font-size:clamp(2rem,10vw,3rem);letter-spacing:-1px}
-  .hero-desc{font-size:1rem;line-height:1.7}
+  .hero h1{font-size:clamp(2rem,10vw,3rem);letter-spacing:-1px;text-wrap:balance}
+  .hero-desc{font-size:1rem;line-height:1.7;text-wrap:pretty}
   .hero-tag{font-size:0.7rem;letter-spacing:2px;margin-bottom:20px}
-  .hero-contacts{flex-direction:column}
-  .h-link,.pdf-btn{justify-content:center;width:100%;font-size:0.78rem;padding:12px 18px}
+
+  /* Four identical full-width bars read as a form, not as links. Pair the two
+     short ones; the address and the PDF button keep the full row. */
+  .hero-contacts{
+    display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:30px;
+  }
+  .h-link,.pdf-btn{
+    justify-content:center;width:100%;
+    font-size:0.78rem;padding:0 12px;
+    min-height:46px;               /* 44px is the minimum comfortable tap target */
+  }
+  .hero-contacts a[href^="mailto"],.hero-contacts .pdf-btn{grid-column:1 / -1}
+
   .skills-grid{grid-template-columns:1fr}
   .certs-grid{grid-template-columns:1fr}
   .t-top{flex-direction:column;gap:6px}
   .t-card{padding:22px;margin-bottom:14px}
-  .t-title{font-size:1rem}
-  .t-items li{font-size:0.86rem;padding:5px 0 5px 18px}
+  .t-title{font-size:1rem;text-wrap:balance}
+  .t-items li{font-size:0.88rem;line-height:1.72;padding:5px 0 5px 18px}
   .timeline{padding-left:18px}
   .t-card::before{left:-22px;width:8px;height:8px;top:28px}
   .section-head{gap:12px;margin-bottom:32px}
   .section-num{font-size:0.72rem;padding:5px 10px}
   .section-title{font-size:0.75rem;letter-spacing:3px}
   .cert-card{padding:20px}
-  .cert-name{font-size:0.9rem}
+  .cert-name{font-size:0.9rem;text-wrap:balance}
   .proj-card{padding:24px}
   .sk-card{padding:22px}
   .sk-tag{font-size:0.82rem;padding:6px 12px}
-  footer{padding:40px 20px 56px}
-  .back-to-top{bottom:20px;right:16px;width:38px;height:38px}
+  footer{padding:40px 20px calc(56px + env(safe-area-inset-bottom))}
+  /* Clear of the iPhone home indicator. */
+  .back-to-top{
+    bottom:calc(20px + env(safe-area-inset-bottom));
+    right:calc(16px + env(safe-area-inset-right));
+    width:42px;height:42px;
+  }
   .glow{display:none}
   .divider{padding:0 20px}
 }
 
 @media(max-width:380px){
-  .hero{padding:90px 16px 40px}
+  /* Below this width the five nav links no longer fit, so hint that the strip
+     scrolls. Above it they fit and a fade would just dim the last one. */
+  .nav-links{
+    mask-image:linear-gradient(90deg,#000 92%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+  }
+  .hero{padding:96px 16px 26px}
   .section{padding:40px 16px}
   .hero h1{font-size:2rem}
   .hero-desc{font-size:0.92rem}
   .t-card{padding:18px}
-  .toggle-btn{padding:4px 7px;font-size:0.6rem}
-  footer{padding:32px 16px 48px}
+  .toggle-btn{padding:5px 8px;font-size:0.62rem}
+  .nav-brand{font-size:0.72rem}
+  .h-link,.pdf-btn{font-size:0.74rem;min-height:44px}
+  footer{padding:32px 16px calc(48px + env(safe-area-inset-bottom))}
   .divider{padding:0 16px}
+}
+
+/* --- REDUCED MOTION --- */
+/* The page leans on scroll reveals; honour the OS setting instead of
+   animating regardless. Elements must still end up visible. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal,.reveal-left,.reveal-right,.reveal-scale{
+    opacity:1!important;transform:none!important;
+  }
 }
 
 /* --- PRINT / PDF --- */

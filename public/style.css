@@ -714,22 +714,49 @@ footer{
 @media(hover:none){
   /* Kill the grey flash iOS/Android paint over tapped links. */
   *{-webkit-tap-highlight-color:transparent}
-  /* Hover styles stick after a tap on touch devices; only apply them on press. */
-  .h-link:hover,.toggle-btn:hover,.nav-links a:hover{transform:none}
-  .h-link:active,.pdf-btn:active,.toggle-btn:active{transform:scale(0.98)}
+
+  /* A tap fires :hover and it stays latched until something else is tapped —
+     the menu button sat lit green after being used. Neutralise the hover
+     styling back to each element's resting state and show the press through
+     :active instead. :not(.active) keeps the section indicator working. */
+  .toggle-btn:not(.active):hover{
+    color:var(--text-dim);border-color:var(--border);background:none;
+  }
+  .nav-links a:not(.active):hover{
+    color:var(--text-dim);background:none;
+  }
+  .h-link:hover,.pdf-btn:hover{
+    color:var(--text-dim);border-color:var(--border);
+    background:var(--surface);box-shadow:none;transform:none;
+  }
+  .sk-tag:hover{
+    color:var(--text);border-color:var(--border);
+    background:rgba(255,255,255,0.01);box-shadow:none;
+  }
+  .proj-link:hover{
+    color:var(--accent);border-color:rgba(0,232,143,0.15);background:none;
+  }
+  .h-link:active,.pdf-btn:active,.toggle-btn:active{transform:scale(0.97)}
 }
 
 /* --- RESPONSIVE --- */
 @media(max-width:768px){
   .nav-inner{
-    height:54px;
-    padding:0 max(12px,env(safe-area-inset-right)) 0 max(12px,env(safe-area-inset-left));
+    height:64px;
+    padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));
   }
-  .nav-brand{font-size:0.78rem}
-  .nav-right{gap:8px}
-  .nav-toggles{gap:3px}
-  .toggle-btn{padding:6px 10px;font-size:0.65rem}
-  .menu-btn{display:inline-flex;align-items:center;justify-content:center;padding:6px 9px}
+  .nav-brand{font-size:0.9rem;gap:9px}
+  .nav-brand .bar{width:3px;height:19px}
+  .nav-right{gap:9px}
+  .nav-toggles{gap:6px}
+  /* 44px is the minimum comfortable tap target; these were ~30px. */
+  .toggle-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:44px;min-height:44px;
+    padding:0 12px;font-size:0.75rem;border-radius:9px;
+  }
+  .toggle-btn svg{width:18px;height:18px;vertical-align:0}
+  .menu-btn{padding:0 11px}
 
   /* The section links become a panel that drops out of the nav bar.
      nav is fixed, so absolute positioning here is relative to it. */
@@ -754,10 +781,10 @@ footer{
     font-size:0.86rem;border-radius:8px;
   }
 
-  .hero{padding:100px 20px 30px}
+  .hero{padding:112px 20px 30px}
   /* Without this, tapping a nav link lands the section heading under the
      fixed bar. */
-  .section{padding:48px 20px;scroll-margin-top:70px}
+  .section{padding:48px 20px;scroll-margin-top:80px}
 
   .hero-row{flex-direction:column;align-items:flex-start;gap:16px}
   .avatar{width:80px;height:80px}
@@ -805,13 +832,14 @@ footer{
 }
 
 @media(max-width:380px){
-  .hero{padding:92px 16px 26px}
+  .hero{padding:106px 16px 26px}
   .section{padding:40px 16px}
   .hero h1{font-size:2rem}
   .hero-desc{font-size:0.92rem}
   .t-card{padding:18px}
-  .toggle-btn{padding:5px 8px;font-size:0.62rem}
-  .nav-brand{font-size:0.72rem}
+  /* Narrower, but the tap targets stay at 44px. */
+  .toggle-btn{padding:0 9px;font-size:0.7rem;min-width:42px}
+  .nav-brand{font-size:0.8rem}
   .h-link,.pdf-btn{font-size:0.74rem;min-height:44px}
   footer{padding:32px 16px calc(48px + env(safe-area-inset-bottom))}
   .divider{padding:0 16px}

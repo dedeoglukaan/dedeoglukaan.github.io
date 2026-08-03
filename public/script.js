@@ -147,6 +147,10 @@ const langBtn = document.getElementById('langToggle');
 let currentLang = 'en';
 
 const translations = {
+  // "Education" and "Training" both translate to "Eğitim" on their own, which
+  // would put two identical entries in the Turkish menu. Öğrenim/Eğitim is the
+  // usual split on a Turkish CV.
+  'nav-edu':       { en: 'Education',   tr: 'Öğrenim' },
   'nav-exp':       { en: 'Experience',  tr: 'Deneyim' },
   'nav-training':  { en: 'Training',    tr: 'Eğitim' },
   'nav-certs':     { en: 'Certs',       tr: 'Sertifika' },
@@ -157,7 +161,7 @@ const translations = {
     en: 'Computer Engineering graduate with a strong foundation in Linux systems, networking, and application security. Backed by hands-on internship experience, an IEEE-published research project, and continuous investment in offensive security training.',
     tr: 'Linux sistemleri, ağ yapıları ve uygulama güvenliği konularında güçlü altyapıya sahip Bilgisayar Mühendisliği mezunu. Staj deneyimleri, IEEE\'de yayımlanmış araştırma projesi ve ofansif güvenlik eğitimleriyle desteklenen bir profil.'
   },
-  'sec-edu':       { en: 'Education',   tr: 'Eğitim' },
+  'sec-edu':       { en: 'Education',   tr: 'Öğrenim' },
   'sec-exp':       { en: 'Experience',  tr: 'Deneyim' },
   'sec-training':  { en: 'Training & Development', tr: 'Eğitim & Gelişim' },
   'sec-certs':     { en: 'Certifications', tr: 'Sertifikalar' },

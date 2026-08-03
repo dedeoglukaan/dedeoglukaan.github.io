@@ -5,3 +5,8 @@
 .assetsignore
 wrangler.jsonc
 README.md
+
+# Wrangler writes temp build artifacts here during `wrangler deploy`.
+# Without this they get published and served as part of the site.
+.wrangler
+node_modules

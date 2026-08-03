@@ -197,6 +197,10 @@ nav{
   vertical-align:-2px;
 }
 
+/* Only exists below the responsive breakpoint; the links sit in the bar
+   itself on wider screens. */
+.menu-btn{display:none}
+
 /* --- HERO --- */
 .hero{
   max-width:1000px;margin:0 auto;
@@ -717,33 +721,43 @@ footer{
 
 /* --- RESPONSIVE --- */
 @media(max-width:768px){
-  /* Nav becomes two rows: brand + toggles, then a scrollable section strip.
-     display:contents lets .nav-right's children join .nav-inner's flex flow,
-     so they can be reordered without changing the markup. */
   .nav-inner{
-    flex-wrap:wrap;height:auto;align-items:center;
-    padding:7px max(12px,env(safe-area-inset-left)) 0 max(12px,env(safe-area-inset-left));
+    height:54px;
+    padding:0 max(12px,env(safe-area-inset-right)) 0 max(12px,env(safe-area-inset-left));
   }
-  .nav-right{display:contents}
-  .nav-brand{order:1;font-size:0.78rem}
-  .nav-toggles{order:2;margin-left:auto;gap:3px}
+  .nav-brand{font-size:0.78rem}
+  .nav-right{gap:8px}
+  .nav-toggles{gap:3px}
   .toggle-btn{padding:6px 10px;font-size:0.65rem}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;padding:6px 9px}
 
+  /* The section links become a panel that drops out of the nav bar.
+     nav is fixed, so absolute positioning here is relative to it. */
   .nav-links{
-    order:3;width:100%;
-    display:flex;gap:2px;
-    margin-top:5px;padding:0 0 6px;
-    overflow-x:auto;overscroll-behavior-x:contain;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:2px;
+    padding:8px max(12px,env(safe-area-inset-left))
+            calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+    /* Opaque, not translucent: at 0.97 the hero still read through it.
+       --surface rather than --bg so the panel reads as raised off the page,
+       and both follow the theme so no light-mode override is needed. */
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 12px 24px rgba(0,0,0,0.35);
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s;
   }
-  .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{white-space:nowrap;padding:7px 11px;font-size:0.74rem;letter-spacing:0.2px}
+  nav.menu-open .nav-links{opacity:1;visibility:visible;transform:none}
+  .nav-links a{
+    display:flex;align-items:center;
+    padding:12px 14px;min-height:46px;
+    font-size:0.86rem;border-radius:8px;
+  }
 
   .hero{padding:100px 20px 30px}
-  /* Nav is sticky and now two rows tall — without this, tapping a nav link
-     lands the section heading underneath it. */
-  .section{padding:48px 20px;scroll-margin-top:92px}
+  /* Without this, tapping a nav link lands the section heading under the
+     fixed bar. */
+  .section{padding:48px 20px;scroll-margin-top:70px}
 
   .hero-row{flex-direction:column;align-items:flex-start;gap:16px}
   .avatar{width:80px;height:80px}
@@ -791,13 +805,7 @@ footer{
 }
 
 @media(max-width:380px){
-  /* Below this width the five nav links no longer fit, so hint that the strip
-     scrolls. Above it they fit and a fade would just dim the last one. */
-  .nav-links{
-    mask-image:linear-gradient(90deg,#000 92%,transparent);
-    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
-  }
-  .hero{padding:96px 16px 26px}
+  .hero{padding:92px 16px 26px}
   .section{padding:40px 16px}
   .hero h1{font-size:2rem}
   .hero-desc{font-size:0.92rem}

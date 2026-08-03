@@ -26,6 +26,45 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   });
 });
 
+// --- MOBILE MENU ---
+// Below the responsive breakpoint the section links live in a panel that
+// drops out of the nav bar. Above it the button is hidden and this is inert.
+const navEl = document.querySelector('nav');
+const menuBtn = document.getElementById('menuToggle');
+const menuIcon = document.getElementById('menuIcon');
+const barsIcon = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+const closeIcon = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+
+function setMenu(open) {
+  navEl.classList.toggle('menu-open', open);
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuIcon.innerHTML = open ? closeIcon : barsIcon;
+}
+
+menuBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  setMenu(!navEl.classList.contains('menu-open'));
+});
+
+// Picking a section should close the panel, not leave it covering the page.
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => setMenu(false));
+});
+
+document.addEventListener('click', e => {
+  if (navEl.classList.contains('menu-open') && !navEl.contains(e.target)) setMenu(false);
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') setMenu(false);
+});
+
+// Rotating to landscape can cross the breakpoint with the panel still open,
+// which would leave the button showing a close icon it no longer controls.
+window.matchMedia('(min-width:769px)').addEventListener('change', e => {
+  if (e.matches) setMenu(false);
+});
+
 // --- ACTIVE SECTION INDICATOR ---
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = [];

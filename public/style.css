@@ -236,7 +236,7 @@ nav{
 }
 
 .avatar{
-  width:110px;height:110px;
+  width:128px;height:128px;
   border-radius:50%;
   border:2.5px solid var(--accent);
   object-fit:cover;
@@ -794,7 +794,7 @@ footer{
   .section{padding:48px 20px;scroll-margin-top:80px}
 
   .hero-row{flex-direction:column;align-items:flex-start;gap:16px}
-  .avatar{width:96px;height:96px}
+  .avatar{width:120px;height:120px}
   .hero h1{font-size:clamp(2rem,10vw,3rem);letter-spacing:-1px;text-wrap:balance}
   .hero-desc{font-size:1rem;line-height:1.7;text-wrap:pretty}
   .hero-tag{font-size:0.7rem;letter-spacing:2px;margin-bottom:20px}

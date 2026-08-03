@@ -799,11 +799,10 @@ footer{
   .hero-desc{font-size:1rem;line-height:1.7;text-wrap:pretty}
   .hero-tag{font-size:0.7rem;letter-spacing:2px;margin-bottom:20px}
 
-  /* Four identical full-width bars read as a form, not as links. All three
-     contacts shrink to their marks and the PDF button fills the rest of the
-     row: [H1] [in] [mail] [ Save as PDF ].
-     The address is spelled out on wider screens instead — here the domain
-     half of it only repeats the site's own name. */
+  /* Four identical full-width bars read as a form, not as links. The two
+     profile links shrink to their marks; the address keeps its text so it can
+     be read and copied, and the PDF button takes the row below.
+     Row 1: [H1] [in] [ address ]     Row 2: [ Save as PDF ] */
   .hero-contacts{
     display:flex;flex-wrap:wrap;gap:9px;margin-top:30px;
   }
@@ -812,18 +811,22 @@ footer{
     font-size:0.78rem;padding:0 14px;
     min-height:52px;border-radius:14px;
   }
-  .icon-only,.h-mail{
+  .icon-only{
     flex:0 0 auto;width:52px;padding:0;
   }
-  /* Labels stay in the DOM for assistive tech; the anchors also carry
+  /* Label stays in the DOM for assistive tech; the anchor also carries
      aria-label. */
-  .icon-only span,.h-mail span{
+  .icon-only span{
     position:absolute;width:1px;height:1px;overflow:hidden;
     clip-path:inset(50%);white-space:nowrap;
   }
-  .icon-only svg,.h-mail svg{width:21px;height:21px}
-  /* Drops to its own row when the label no longer fits beside the marks. */
-  .pdf-btn{flex:1 1 150px}
+  .icon-only svg{width:21px;height:21px}
+  /* The address gets its own row. Sharing row 1 truncated it at 390px and
+     360px — the two commonest iPhone widths — because the label is 180px
+     wide and only ~172px was left beside the marks. */
+  .pdf-btn{flex:1 1 140px}
+  .h-mail{flex:1 1 100%;min-width:0}
+  .h-mail span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
   .skills-grid{grid-template-columns:1fr}
   .certs-grid{grid-template-columns:1fr}
@@ -862,7 +865,7 @@ footer{
   .toggle-btn{padding:0 9px;font-size:0.7rem;min-width:42px}
   .nav-brand{font-size:0.8rem}
   .h-link,.pdf-btn{font-size:0.74rem;min-height:46px}
-  .icon-only,.h-mail{width:46px}   /* keep them square when min-height drops */
+  .icon-only{width:46px}   /* keep them square when min-height drops */
   footer{padding:32px 16px calc(48px + env(safe-area-inset-bottom))}
   .divider{padding:0 16px}
 }

@@ -23,6 +23,22 @@
   --text-dim:#5a5a72;
   --mono:'JetBrains Mono',monospace;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+
+  /* Layout. Five containers (nav, hero, divider, section, footer) shared the
+     same hardcoded 1000px/40px; changing the desktop width meant editing five
+     rules and was easy to do incompletely. They read these instead, so a
+     breakpoint only has to override :root. The mobile block below still sets
+     its own padding — it also needs env(safe-area-inset-*), which does not
+     compose into a single custom property. */
+  --maxw:1000px;
+  --gut:40px;
+  /* Width of the prose column. Measured 2026-08-04: the timeline bullets ran
+     111 characters per line at 1280px and up, well past the readable 45-85
+     range (.hero-desc was already capped at 660px; these were not).
+     This caps the *card*, not the text inside it — capping the text left the
+     card's border and background running 200px past where the copy stopped,
+     which read as a rendering fault rather than a choice. */
+  --measure:660px;
 }
 
 /* --- LIGHT MODE --- */
@@ -133,9 +149,9 @@ nav{
 }
 
 .nav-inner{
-  max-width:1000px;margin:0 auto;
+  max-width:var(--maxw);margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
-  height:60px;padding:0 40px;
+  height:60px;padding:0 var(--gut);
 }
 
 .nav-brand{
@@ -207,8 +223,8 @@ nav{
 
 /* --- HERO --- */
 .hero{
-  max-width:1000px;margin:0 auto;
-  padding:160px 40px 100px;
+  max-width:var(--maxw);margin:0 auto;
+  padding:160px var(--gut) 100px;
   position:relative;z-index:1;
 }
 
@@ -299,7 +315,7 @@ nav{
 
 /* --- DIVIDER --- */
 .divider{
-  max-width:1000px;margin:0 auto;padding:0 40px;
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);
 }
 
 .divider-line{
@@ -309,8 +325,8 @@ nav{
 
 /* --- SECTIONS --- */
 .section{
-  max-width:1000px;margin:0 auto;
-  padding:80px 40px;
+  max-width:var(--maxw);margin:0 auto;
+  padding:80px var(--gut);
   position:relative;z-index:1;
 }
 
@@ -349,6 +365,9 @@ nav{
   padding:32px;margin-bottom:20px;
   transition:all 0.3s;position:relative;
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  /* Only binds above ~740px viewport; below that the card is already
+     narrower than this and the mobile padding governs. */
+  max-width:var(--measure);
 }
 
 .t-card::before{
@@ -570,8 +589,8 @@ nav{
 
 /* --- FOOTER --- */
 footer{
-  max-width:1000px;margin:0 auto;
-  padding:56px 40px 72px;
+  max-width:var(--maxw);margin:0 auto;
+  padding:56px var(--gut) 72px;
   text-align:center;
   position:relative;z-index:1;
 }
@@ -744,6 +763,45 @@ footer{
     color:var(--accent);border-color:rgba(0,232,143,0.15);background:none;
   }
   .h-link:active,.pdf-btn:active,.toggle-btn:active{transform:scale(0.97)}
+}
+
+/* --- TOUCH ABOVE THE PHONE BREAKPOINT --- */
+/* Every tap target on this site was sized inside max-width:768px, so the
+   moment a touch device got wider than that it fell back to the desktop
+   controls. Measured 2026-08-04 at 769/820/834/1024px: toggle buttons 36x23
+   and nav links 31px tall — that is every iPad, in both orientations, plus
+   touch laptops. WCAG 2.5.5 and Apple's HIG both want 44px.
+
+   Keyed on hover:none rather than width, because the thing that decides
+   whether 44px is needed is the input device, not the viewport. A 1280px
+   touchscreen laptop needs it; an 800px desktop window does not. */
+@media(hover:none) and (min-width:769px){
+  .toggle-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:44px;min-height:44px;
+  }
+  .toggle-btn svg{width:17px;height:17px;vertical-align:0}
+  /* The bar is 60px tall, so 44px sits inside it without changing nav height. */
+  .nav-links a{display:flex;align-items:center;min-height:44px}
+  .h-link,.pdf-btn{min-height:44px}
+}
+
+/* --- TABLET / SMALL LAPTOP --- */
+/* 769-1023px had no rules of its own: at 769px the mobile block switched off
+   all at once and the layout jumped straight to full desktop gutters. This
+   only softens the gutter step (20 -> 28 -> 40) so the jump is not abrupt. */
+@media(min-width:769px) and (max-width:1023px){
+  :root{--gut:28px}
+  .hero{padding:130px var(--gut) 76px}
+  .section{padding:64px var(--gut);scroll-margin-top:76px}
+}
+
+/* --- LARGE DESKTOP --- */
+/* Below this the 1000px container is the right call for line length. Past
+   1440px it just leaves 460px+ of dead space either side, so the container
+   widens while the text column stays capped by --measure. */
+@media(min-width:1440px){
+  :root{--maxw:1180px}
 }
 
 /* --- RESPONSIVE --- */
@@ -961,6 +1019,10 @@ footer{
     border:1px solid #e5e5e5!important;border-radius:8px!important;
     background:#fafafa!important;box-shadow:none!important;
     break-inside:avoid;page-break-inside:avoid;
+    /* --measure caps the card on screen to keep the line length readable.
+       On paper the page box already does that, so let it use the full width
+       — otherwise the printed CV wastes the right third of every page. */
+    max-width:100%!important;
   }
 
   .t-card::before{

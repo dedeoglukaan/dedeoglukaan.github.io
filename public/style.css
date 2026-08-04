@@ -425,11 +425,50 @@ nav{
   letter-spacing:0.3px;font-weight:500;
 }
 
-.badge.gold{background:rgba(255,255,255,0.05);color:#e2e8f0;border:1px solid rgba(255,255,255,0.12)}
-[data-theme="light"] .badge.gold{background:rgba(0,0,0,0.04);color:#374151;border:1px solid rgba(0,0,0,0.12)}
+/* The distinction line inside a timeline card ("top 20 out of ...").
+   It was a grey stadium pill: 20px radius, white-on-white, hollow outline
+   star. At one line that passes; the moment it wrapped to two on a phone the
+   rounded ends and flat fill read as a disabled text input, not an award.
+
+   Amber is not a new colour here — .cert-issuer.garanti already uses
+   var(--amber), so this is the palette the "gold" class name was always
+   pointing at and never actually used. */
+.badge.gold{
+  align-items:flex-start;
+  gap:9px;
+  padding:10px 15px 10px 13px;
+  /* 10px, not 20px: a stadium shape only reads as intentional while the
+     content is one line. This wraps to two on every phone. */
+  border-radius:10px;
+  border:1px solid rgba(245,158,11,0.22);
+  border-left:2px solid var(--amber);
+  background:linear-gradient(90deg,rgba(245,158,11,0.11),rgba(245,158,11,0.02));
+  color:#fbbf24;
+  line-height:1.55;
+  text-wrap:pretty;
+}
+[data-theme="light"] .badge.gold{
+  color:#92400e;
+  border:1px solid rgba(180,83,9,0.22);
+  border-left:2px solid #b45309;
+  background:linear-gradient(90deg,rgba(245,158,11,0.16),rgba(245,158,11,0.03));
+}
 .badge.green{background:var(--accent-bg);color:var(--accent);border:1px solid rgba(0,232,143,0.15)}
 
 .badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+/* Solid, and pinned to the first line rather than the centre of the box —
+   centred, it floated beside the gap between two wrapped lines. */
+.badge.gold svg{
+  width:13px;height:13px;
+  fill:var(--amber);stroke:none;
+  flex:0 0 auto;margin-top:3px;
+}
+[data-theme="light"] .badge.gold svg{fill:#b45309}
+
+/* The badge is the whole content of its <li>, so the list's own dash sat to
+   its left as a second marker. Drop it and keep the indent, so the badge
+   still lines up with the text of the bullets around it. */
+.t-items li:has(> .badge)::before{display:none}
 
 /* --- PROJECT CARD --- */
 .proj-card{
@@ -1046,7 +1085,15 @@ footer{
 
   .badge{font-size:7pt!important;padding:3px 8px!important}
   .badge.green{color:#059669!important;border-color:#059669!important;background:rgba(5,150,105,0.06)!important}
-  .badge.gold{color:#444!important;border-color:#ccc!important;background:#f5f5f5!important}
+  /* Amber does not survive a greyscale printer, but the emphasis should:
+     keep the left bar and the solid star, drop the tint. Without the explicit
+     border-left the screen rule's 2px amber edge prints as a 2px amber edge. */
+  .badge.gold{
+    color:#444!important;border-color:#ccc!important;background:#f5f5f5!important;
+    border-left:2px solid #999!important;border-radius:6px!important;
+    padding:5px 10px!important;
+  }
+  .badge.gold svg{fill:#666!important;stroke:none!important;margin-top:2px!important}
   .badge svg{width:10px!important;height:10px!important}
 
   .certs-grid{

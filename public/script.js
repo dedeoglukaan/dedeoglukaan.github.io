@@ -158,8 +158,8 @@ const translations = {
   'nav-skills':    { en: 'Skills',      tr: 'Beceri' },
   'hero-tag':      { en: 'Open to opportunities', tr: 'Fırsatlara açık' },
   'hero-desc':     {
-    en: 'Computer Engineering graduate with a strong foundation in Linux systems, networking, and application security. Backed by hands-on internship experience, an IEEE-published research project, and continuous investment in offensive security training.',
-    tr: 'Linux sistemleri, ağ yapıları ve uygulama güvenliği konularında güçlü altyapıya sahip Bilgisayar Mühendisliği mezunu. Staj deneyimleri, IEEE\'de yayımlanmış araştırma projesi ve ofansif güvenlik eğitimleriyle desteklenen bir profil.'
+    en: 'Computer Engineering graduate working full time on offensive application security. Hunts vulnerabilities through HackerOne — highest severity validated to date Critical, CVSS 9.3 — and builds the tooling and methodology behind that work. Backed by systems and networking internships and an IEEE-published research project.',
+    tr: 'Ofansif uygulama güvenliği üzerine tam zamanlı çalışan Bilgisayar Mühendisliği mezunu. HackerOne üzerinden zafiyet avlıyor — şimdiye kadar doğrulanan en yüksek severity Critical, CVSS 9.3 — ve bu işin arkasındaki araç setiyle metodolojiyi kendisi kuruyor. Sistem ve ağ stajları ve IEEE\'de yayımlanmış bir araştırma projesiyle destekli.'
   },
   'sec-edu':       { en: 'Education',   tr: 'Öğrenim' },
   'sec-exp':       { en: 'Experience',  tr: 'Deneyim' },
@@ -170,6 +170,36 @@ const translations = {
   'edu-bsc':       { en: 'BSc in Computer Engineering', tr: 'Bilgisayar Mühendisliği Lisans' },
   'edu-bsc-org':   { en: 'Eskişehir Technical University, Turkey — Language of Instruction: English', tr: 'Eskişehir Teknik Üniversitesi — Öğretim Dili: İngilizce' },
   'edu-hs-org':    { en: 'Science High School — Silivri, Istanbul, Turkey', tr: 'Fen Lisesi — Silivri, İstanbul' },
+  // Independent security research. Nothing here may name a program or
+  // describe a finding: none of the 45 reports are publicly disclosed, so
+  // every one of them is still confidential under the programs' policies.
+  // Aggregate counts, severity and his own tooling are all that can be said.
+  'exp-sec-title': { en: 'Independent Security Researcher', tr: 'Bağımsız Güvenlik Araştırmacısı' },
+  'exp-sec-org':   { en: 'HackerOne — @dedephus — Remote', tr: 'HackerOne — @dedephus — Uzaktan' },
+  'exp-sec-badge': {
+    en: 'Highest severity validated to date: Critical, CVSS 9.3',
+    tr: 'Şimdiye kadar doğrulanan en yüksek severity: Critical, CVSS 9.3'
+  },
+  'exp-sec-1':     {
+    en: 'Reported 45 vulnerabilities across 12 bug bounty programs since April 2026; first bounty awarded in August 2026.',
+    tr: 'Nisan 2026\'dan bu yana 12 bug bounty programına 45 zafiyet raporladı; ilk ödülünü Ağustos 2026\'da aldı.'
+  },
+  'exp-sec-2':     {
+    en: 'Program names and technical detail stay out of public writing until the vendor discloses the report — every finding to date is still under coordinated disclosure.',
+    tr: 'Program adları ve teknik detaylar, satıcı raporu açıklayana kadar kamuya açık metinlerde yer almıyor — bugüne kadarki bulguların tamamı hâlâ koordineli açıklama sürecinde.'
+  },
+  'exp-sec-3':     {
+    en: 'Built and maintains the-grind, a private research platform: ~1,150 commits, 25 hunting modules, ~10,500 lines of methodology, and a 14,617-report corpus mined for recurring vulnerability patterns.',
+    tr: 'the-grind adlı özel araştırma platformunu geliştirdi ve sürdürüyor: ~1.150 commit, 25 av modülü, ~10.500 satır metodoloji ve tekrar eden zafiyet örüntüleri için taranan 14.617 raporluk bir korpus.'
+  },
+  'exp-sec-4':     {
+    en: 'Reads open-source codebases for authorization gaps and unguarded internal clients, then proves each candidate with a working end-to-end PoC on a local deployment before writing it up.',
+    tr: 'Açık kaynak kod tabanlarını authorization boşlukları ve yetki kontrolü yapmayan iç istemciler için okuyor; her adayı rapora dökmeden önce yerel kurulumda uçtan uca çalışan bir PoC ile kanıtlıyor.'
+  },
+  'exp-sec-5':     {
+    en: 'Ramped up full time from July 2025 — web application security fundamentals, systematic study of disclosed HackerOne reports and public vulnerability research, and a repeatable testing methodology — before the first submission in April 2026.',
+    tr: 'Temmuz 2025\'ten itibaren tam zamanlı hazırlandı: web uygulama güvenliği temelleri, yayımlanmış HackerOne raporlarının ve kamuya açık zafiyet araştırmalarının sistematik incelenmesi, tekrarlanabilir bir test metodolojisi. İlk raporunu Nisan 2026\'da gönderdi.'
+  },
   'exp-estu-title':{ en: 'IT Systems Intern', tr: 'Sistem Stajyeri' },
   'exp-estu-org':  { en: 'Eskişehir Technical University — IT Department, Systems & Networking', tr: 'Eskişehir Teknik Üniversitesi — Bilgi İşlem Dairesi, Sistem ve Ağ Birimi' },
   'exp-estu-1':    {
@@ -208,7 +238,7 @@ const translations = {
   },
   'tr-title':      { en: 'Garanti BBVA Technology Security Academy', tr: 'Garanti BBVA Teknoloji Güvenlik Akademisi' },
   'tr-org':        { en: 'Enterprise Technology & Cybersecurity Training Program — Patika.dev', tr: 'Kurumsal Teknoloji ve Siber Güvenlik Eğitim Programı — Patika.dev' },
-  'tr-badge':      { en: 'Selected top 20 out of ~2,000 applicants', tr: '~2.000 başvurudan ilk 20\'ye seçildi' },
+  'tr-badge':      { en: 'Top 20 of 3,600 applicants — 450 admitted, narrowed to 20', tr: '3.600 başvuru arasından ilk 20 — 450 kişi kabul edildi, ardışık elemelerle 20\'ye indi' },
   'tr-1':          {
     en: 'Intensive program covering Linux internals, network protocols, and enterprise application security.',
     tr: 'Linux iç yapısı, ağ protokolleri ve kurumsal uygulama güvenliğini kapsayan yoğun eğitim programı.'
